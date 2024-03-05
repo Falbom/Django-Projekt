@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona główna</title>
+    <style>
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        table {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<h3>Grupy</h3>
+<table>
+    <tr>
+        <th>Typ</th>
+        <th>Numer</th>
+        <th>Operacje</th>
+    </tr>
+    {% for group in groups %}
+    <tr>
+        <td>{{ group.type }}</td>
+        <td>{{ group.number }}</td>
+        <td><a href="{% url 'crud:update_group' group.id %}">Edytuj</a>
+            <a href="{% url 'crud:delete_group' group.id %}">Usuń</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<p> <a href="{% url 'crud:create_group' %}"> + Dodaj nową grupę</a></p>
+
+<h3>Studenci</h3>
+<table>
+    <tr>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Grupa</th>
+        <th>Operacje</th>
+    </tr>
+    {% for student in students %}
+    <tr>
+        <td>{{ student.first_name }}</td>
+        <td>{{ student.last_name }}</td>
+        <td>{{ student.group }}</td>
+        <td><a href="{% url 'crud:update_student' student.id %}">Edytuj</a>
+            <a href="{% url 'crud:delete_student' student.id %}">Usuń</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<p> <a href="{% url 'crud:create_student' %}"> + Dodaj nowego studenta</a></p>
+</body>
+</html>

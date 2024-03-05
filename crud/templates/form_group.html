@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if object %}Edytuj grupę {% else %} Dodaj grupę {% endif %}</title>
+</head>
+<body>
+<h3>{% if object %}Edytuj grupę {% else %} Dodaj grupę {% endif %}</h3>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p><input type="submit" value="Prześlij"></p>
+    </form>
+    <p> <a href="{% url 'crud:index' %}"> Wróć do listy</a></p>
+</body>
+</html>
